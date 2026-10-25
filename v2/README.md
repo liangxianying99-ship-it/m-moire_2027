@@ -1,0 +1,11 @@
+# 章节翻译工作台 V2
+
+以 2026-10-25 用户上传的 278 项三译本框架为数据结构。五类原序号、重复词条与 15 原始字段保留。seed.json 是表格数据快照，不包含机器生成译文。
+
+构建：`python v2/build.py`，仅需 Python 3 标准库。输出到 downloads/Research-Studio-v2.html 及 ZIP。构建后单文件中包含所有样式、脚本、插画及初始词条，不需要网络运行。
+
+IndexedDB 数据库使用独立名称 shin-chapter-studio-v2，不覆盖旧版 localStorage 或 SQLite。保存队列防止写入乱序；JSON 全量备份可在新设备恢复。单独保存章节版本、指令／词条修改前版本，正文输入自动保存。
+
+测试：在 downloads 目录启动本地 HTTP 3012 端口，在配备 Playwright 和 Chromium 的开发环境运行 `node v2/test.cjs`。覆盖章节、四份正文、指令、快照、词条关联、XLSX 导出、笔记、待办、刷新保留与备份恢复、移动端布局。测试数据只写浏览器测试配置，不写发布包。
+
+已验证开发环境中的浏览器交互与标准 XLSX 导出（openpyxl 回读）。当前开发环境策略阻止 file:// 导航，未声称在此环境已执行本地文件协议测试；用户端用普通 Chrome 窗口打开单 HTML。真实模型实验不在平台自动进行。
