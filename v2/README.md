@@ -11,3 +11,7 @@ IndexedDB 数据库使用独立名称 shin-chapter-studio-v2，不覆盖旧版 l
 已验证开发环境中的浏览器交互与标准 XLSX 导出（openpyxl 回读）。当前开发环境策略阻止 file:// 导航，未声称在此环境已执行本地文件协议测试；用户端用普通 Chrome 窗口打开单 HTML。真实模型实验不在平台自动进行。
 
 Aixélá 策略更新：将三方翻译方法列改为保留类 5 项／替代类 6 项，可复选并指定主策略；附标注状态、证据、效果分析和因素解释。旧自由文本保存在 MethodLegacy，不自动映射。XLSX 增加策略标注工作表（每词每主体一行），五类主体表仍为 15 列。策略与主策略选择校验、旧记录保留由 test-strategies.cjs 验证。
+
+批量导入工具：默认面向章节正文（TXT/DOCX），提供词形定位、独立 AI 会话对齐提示、TSV 返回校验、预览合并、章节同步保存与核对状态。另支持 XLSX/CSV/TSV 批量导入。使用 JSZip 3.10.1 读取 ZIP/XML，库与完整许可证内嵌离线 HTML，包内包含许可证文件，无外部 CDN。
+
+开发测试先运行 `python v2/prepare-import-tests.py`（需要 openpyxl），再运行 `node v2/test-importer.cjs`。覆盖压缩 XLSX／DOCX、字段别名、冲突与重复项保护、原句校验、导入审计、刷新保留、8 工作表回读。真实模型的语义对齐效果未经本测试声称验证。
